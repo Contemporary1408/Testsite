@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Column Chart from TXT</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <canvas id="myChart" width="400" height="200"></canvas>
+
+  <script>
+    // Function to load the data from a text file
+    async function loadData() {
+      const response = await fetch('data.txt');
+      const text = await response.text();
+      const values = text.split(',').map(v => parseFloat(v.trim()));
+      return values;
+    }
+
+    // Initialize chart after data is loaded
+    loadData().then(data => {
+      const ctx = document.getElementById('myChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: data.map((_, i) => `Item ${i + 1}`),
+          datasets: [{
+            label: 'Values from TXT',
+            data: data,
+            backgroundColor: 'rgba(75, 192, 192, 0.6)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
