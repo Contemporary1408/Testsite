@@ -1,12 +1,50 @@
- <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Page Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTBA Report</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: left;
+        }
+        .chart-row {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .chart-container {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+        }
+        canvas {
+            max-width: 100%;
+        }
+    </style>
 </head>
 <body>
-
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
-
+    <h1 style="background-color:Tomato;color:White;">MTBA Report Visualization</h1>
+    <h2>1.Model CHS25</h2>
+    <div class="chart-row">
+        <div class="chart-container">
+            <canvas id="chartAOI"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="chartFlipChip"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="chartIRCF"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="chartUnderfill"></canvas>
+        </div>
+    </div>
+    <script src="chart.js"></script>
+    
 </body>
-</html> 
+</html>
